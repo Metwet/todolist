@@ -10,11 +10,13 @@ export class TodoService {
 
   private todoItems: TodoItem[]=[];
 
-  getTodoTtems(): TodoItem[] {
+  getTodoItems(): TodoItem[] {
     return this.todoItems;
   }
 
   addTodoItems(item: TodoItem): void {
+    console.log(item);
+    console.log(this.todoItems)
     this.todoItems.push(item);
   }
 
