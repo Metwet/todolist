@@ -1,0 +1,13 @@
+.normal {
+    background-color: #d2cece;
+}
+  
+.important {
+    background-color: #ffd700;
+}
+  
+.completed {
+    background-color: #569561;
+    text-decoration: line-through;
+}
+  
