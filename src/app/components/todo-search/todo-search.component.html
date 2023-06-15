@@ -1,0 +1,12 @@
+<div class="search-container">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search by title">
+    <button (click)="search()">Search</button>
+  
+    <select [(ngModel)]="filterStatus" (change)="filter()">
+      <option value="">All</option>
+      <option value="Normal">Normal</option>
+      <option value="Important">Important</option>
+      <option value="Completed">Completed</option>
+    </select>
+</div>
+  

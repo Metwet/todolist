@@ -1,8 +1,20 @@
 <app-todo-form (addTodoItemEvent)="addTodoItem($event)"></app-todo-form>
-<div *ngIf="todoItems.length > 0; else emptyList">
-    <app-todo-item *ngFor="let item of todoItems" [todoItem]="item"></app-todo-item>
-</div>
+
+<input type="text" [(ngModel)]="searchQuery" (input)="searchItems(searchQuery)">
+<button (click)="searchItems(searchQuery)">Поиск</button>
+
+<select [(ngModel)]="statusFilter" (change)="filterItems(statusFilter)">
+    <option value="">Все статусы</option>
+    <option value="normal">Normal</option>
+    <option value="important">Important</option>
+    <option value="completed">Completed</option>
+</select>
   
+
+<div *ngIf="filteredItems.length > 0; else emptyList">
+  <app-todo-item *ngFor="let item of filteredItems" [todoItem]="item"></app-todo-item>
+</div>
+
 <ng-template #emptyList>
-    <p>Список пуст</p>
+  <p>Список пуст</p>
 </ng-template>
