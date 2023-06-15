@@ -1,20 +1,36 @@
-<app-todo-form (addTodoItemEvent)="addTodoItem($event)"></app-todo-form>
-
-<input type="text" [(ngModel)]="searchQuery" (input)="searchItems(searchQuery)">
-<button (click)="searchItems(searchQuery)">Поиск</button>
-
-<select [(ngModel)]="statusFilter" (change)="filterItems(statusFilter)">
-    <option value="">Все статусы</option>
-    <option value="normal">Normal</option>
-    <option value="important">Important</option>
-    <option value="completed">Completed</option>
-</select>
-  
-
-<div *ngIf="filteredItems.length > 0; else emptyList">
-  <app-todo-item *ngFor="let item of filteredItems" [todoItem]="item"></app-todo-item>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <app-todo-form (addTodoItemEvent)="addTodoItem($event)"></app-todo-form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" [(ngModel)]="searchQuery" (input)="searchItems(searchQuery)" placeholder="Search by title">
+          <button class="btn btn-primary" (click)="searchItems(searchQuery)">Search</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group mb-3">
+          <select class="form-select" [(ngModel)]="statusFilter" (change)="filterItems(statusFilter)">
+            <option value="">All statuses</option>
+            <option value="normal">Normal</option>
+            <option value="important">Important</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div *ngIf="filteredItems.length > 0; else emptyList">
+          <app-todo-item *ngFor="let item of filteredItems" [todoItem]="item"></app-todo-item>
+        </div>
+        <ng-template #emptyList>
+          <h2>the list is empty</h2>
+        </ng-template>
+      </div>
+    </div>
 </div>
-
-<ng-template #emptyList>
-  <p>Список пуст</p>
-</ng-template>
+  

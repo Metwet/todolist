@@ -1,5 +1,9 @@
+.todoItem {
+    margin: 20px 0;
+}
+
 .normal {
-    background-color: #d2cece;
+    background-color: #92bae2;
 }
   
 .important {
@@ -10,4 +14,3 @@
     background-color: #569561;
     text-decoration: line-through;
 }
-  

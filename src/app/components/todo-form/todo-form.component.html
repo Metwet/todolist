@@ -1,20 +1,29 @@
-<form (ngSubmit)="addTodoItem()">
-    <div>
-      <label>Title:</label>
-      <input type="text" [(ngModel)]="newTodoItem.title" name="title" required>
-    </div>
-    <div>
-      <label>Description:</label>
-      <input type="text" [(ngModel)]="newTodoItem.description" name="description" required>
-    </div>
-    <div>
-      <label>Status:</label>
-      <select [(ngModel)]="newTodoItem.status" name="status" required>
-        <option value="normal">Normal</option>
-        <option value="important">Important</option>
-        <option value="completed">Completed</option>
+<form (ngSubmit)="addTodoItem()" class="needs-validation todoForm">
+  <h2>Create item:</h2>  
+  <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" class="form-control" id="title" [(ngModel)]="newTodoItem.title" name="title" required>
+      <div class="invalid-feedback">
+          Please enter a title.
+      </div>
+  </div>
+  <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <input type="text" class="form-control" id="description" [(ngModel)]="newTodoItem.description" name="description" required>
+      <div class="invalid-feedback">
+          Please enter a description.
+      </div>
+  </div>
+  <div class="mb-3">
+      <label for="status" class="form-label">Status:</label>
+      <select class="form-select" id="status" [(ngModel)]="newTodoItem.status" name="status" required>
+          <option value="normal">Normal</option>
+          <option value="important">Important</option>
+          <option value="completed">Completed</option>
       </select>
-    </div>
-    <button type="submit">Add Todo Item</button>
+      <div class="invalid-feedback">
+          Please select a status.
+      </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Todo Item</button>
 </form>
-  
