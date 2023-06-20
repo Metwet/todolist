@@ -7,6 +7,9 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { FormsModule } from '@angular/forms';
 import { TodoSearchComponent } from './components/todo-search/todo-search.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { AboutModule } from './modules/about/about.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { TodoSearchComponent } from './components/todo-search/todo-search.compon
     TodoItemComponent,
     TodoListComponent,
     TodoFormComponent,
-    TodoSearchComponent
+    TodoSearchComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    AuthModule,
+    AboutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
