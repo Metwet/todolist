@@ -12,6 +12,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AboutModule } from './modules/about/about.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './modules/auth/auth.guard';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthGuard } from './modules/auth/auth.guard';
     TodoListComponent,
     TodoFormComponent,
     TodoSearchComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
