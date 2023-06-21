@@ -24,6 +24,8 @@ export class TodoService {
 
   addTodoItems(item: TodoItem): void {
     this.todoItems.unshift(item);
+    console.log(this.todoItems);
+    
   }
 
   deleteTodoItems(item: TodoItem): void {

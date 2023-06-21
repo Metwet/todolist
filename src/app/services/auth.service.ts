@@ -46,4 +46,8 @@ export class AuthService {
   getUser() {
     return this.http.get<User>(`${this.baseUrl}/user`);
   }
+
+  getToken(): string | null {
+    return localStorage.getItem('del_meetups_auth_token');
+  }
 }
