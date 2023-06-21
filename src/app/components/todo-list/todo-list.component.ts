@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { map } from 'rxjs';
 import { TodoItem, TodoStatus} from 'src/app/models/todo-item.model';
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -17,6 +18,15 @@ export class TodoListComponent {
 
 
   constructor(private todoService: TodoService){}
+
+  ngOnInit():void {
+    this.todoService.getItemsFromJSON().subscribe((data)=>{
+      data.forEach((item)=>{
+        this.todoService.addTodoItems(item);
+      })
+      this.fetchTodoItems();
+    })
+  }
 
   fetchTodoItems(): void {
     this.todoItems = this.todoService.getTodoItems();
@@ -42,7 +52,6 @@ export class TodoListComponent {
     }
     this.todoService.addTodoItems(newItem);
     this.fetchTodoItems();
-    console.log(newItem)
   }
 
 }

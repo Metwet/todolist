@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
 import { TodoItem, TodoStatus } from '../models/todo-item.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   private todoItems: TodoItem[]=[];
+
+
+  getItemsFromJSON(): Observable<TodoItem[]> {
+    return this.http.get<TodoItem[]>(`${environment.todoItemsJSON}`);
+  }
 
   getTodoItems(): TodoItem[] {
     return this.todoItems;
   }
 
   addTodoItems(item: TodoItem): void {
-    this.todoItems.push(item);
+    this.todoItems.unshift(item);
   }
 
   deleteTodoItems(item: TodoItem): void {

@@ -20,7 +20,9 @@ export class AuthService {
       .post<{ token: string}>(`${this.baseUrl}/login`, { email, password })
       .pipe(
         map ((res)=>{
-          if(res.token) {            
+          if(res.token) {  
+            console.log(res.token);
+                      
             localStorage.setItem('del_meetups_auth_token', res.token)
           }
           return null;
