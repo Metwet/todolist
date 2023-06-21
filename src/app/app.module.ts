@@ -10,6 +10,7 @@ import { TodoSearchComponent } from './components/todo-search/todo-search.compon
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AboutModule } from './modules/about/about.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AboutModule } from './modules/about/about.module';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     AuthModule,
     AboutModule
   ],

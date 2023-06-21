@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +9,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class LoginComponent {
 
+  constructor (private authService: AuthService,  private routers: Router) {}
+
   @Output() public loginEvent = new EventEmitter();
 
-  username!: string;
+  email!: string;
   password!: string;
 
-  login(username: string, password: string): void {
-    console.log(`${username} and ${password}`);
+  login(email: string, password: string): void {
+    this.authService.login(email, password).subscribe(()=>{
+       this.routers.navigate([`/todolist`])
+      }
+    );
   }
 }
