@@ -15,6 +15,10 @@ export class AuthService {
 
   constructor(private http: HttpClient, private routes: Router) {}
 
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem(`del_meetups_auth_token`);
+  }
+
   login(email: string, password: string){
     return this.http
       .post<{ token: string}>(`${this.baseUrl}/login`, { email, password })

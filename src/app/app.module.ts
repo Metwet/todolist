@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AboutModule } from './modules/about/about.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './modules/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     AboutModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
