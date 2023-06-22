@@ -15,4 +15,8 @@ export class TodoItemComponent {
   deleteTodoItem(): void {
     this.todoService.deleteTodoItems(this.todoItem);
   }
+
+  changeStatus(status: TodoStatus): void {
+    this.todoService.updateTodoItemStatus(this.todoItem, status);
+  }
 }

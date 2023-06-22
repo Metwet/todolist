@@ -1,11 +1,20 @@
 <div [ngClass]="{
-    'normal': todoItem.status === todoStatus.Normal,
-    'important': todoItem.status === todoStatus.Important,
-    'completed': todoItem.status === todoStatus.Completed
-  }" class="card todoItem">
-    <div class="card-body">
+  'normal': todoItem.status === todoStatus.Normal,
+  'important': todoItem.status === todoStatus.Important,
+  'completed': todoItem.status === todoStatus.Completed
+}" class="card todoItem">
+  <div class="card-body d-flex align-items-center">
+    <div>
       <h3 class="card-title">{{ todoItem.title }}</h3>
-      <p class="card-text">Description: {{ todoItem.description }}</p>
-      <button (click)="deleteTodoItem()" class="btn btn-danger">Delete</button>
+    <p class="card-text">Description: {{ todoItem.description }}</p>
     </div>
+    <div class="ms-auto">
+      <button (click)="deleteTodoItem()" class="btn btn-danger myBtn">Delete</button>
+      <select [(ngModel)]="todoItem.status" (ngModelChange)="changeStatus(todoItem.status)" class="form-select">
+        <option [value]="todoStatus.Normal">Normal</option>
+        <option [value]="todoStatus.Important">Important</option>
+        <option [value]="todoStatus.Completed">Completed</option>
+      </select>
+    </div>
+  </div>
 </div>
