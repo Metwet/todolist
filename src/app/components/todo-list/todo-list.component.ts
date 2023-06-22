@@ -11,7 +11,6 @@ import { TodoService } from 'src/app/services/todo.service';
 export class TodoListComponent {
   todoItems: TodoItem[] = [];
   filteredItems: TodoItem[] = []
-
   filterStatus: boolean = false;
   statusFilter: TodoStatus | null = null;
   searchQuery: string = '';
@@ -20,12 +19,7 @@ export class TodoListComponent {
   constructor(private todoService: TodoService){}
 
   ngOnInit():void {
-    this.todoService.getItemsFromJSON().subscribe((data)=>{
-      data.forEach((item)=>{
-        this.todoService.addTodoItems(item);
-      })
-      this.fetchTodoItems();
-    })
+    this.fetchTodoItems();
   }
 
   fetchTodoItems(): void {

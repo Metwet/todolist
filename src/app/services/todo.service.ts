@@ -9,7 +9,14 @@ import { Observable, map } from 'rxjs';
 })
 export class TodoService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getItemsFromJSON().subscribe((data)=>{
+      data.forEach((item)=>{
+        this.addTodoItems(item);
+     })
+      
+   })
+  }
 
   private todoItems: TodoItem[]=[];
 
@@ -23,9 +30,13 @@ export class TodoService {
   }
 
   addTodoItems(item: TodoItem): void {
+    if (this.todoItems.length > 0){
+      const maxId = Math.max(...this.todoItems.map(item => item.id));
+      item.id = maxId + 1;
+    } else {
+      item.id = 1;
+    }
     this.todoItems.unshift(item);
-    console.log(this.todoItems);
-    
   }
 
   deleteTodoItems(item: TodoItem): void {
